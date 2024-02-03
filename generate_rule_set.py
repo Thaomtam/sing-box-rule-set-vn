@@ -51,8 +51,23 @@ def convert_easylist(data):
     return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def convert_black(data):
-    domain_list = [line.split()[-1] for line in data.splitlines() if line.strip() and not line.startswith("#") and not line.startswith("0.0.0.0") and not line.startswith("127.0.0.1") and not line.startswith("::1")]
+    domain_list = []
+    start_conversion = False
+    end_marker = "# End yoyo.org"
+    for line in data.splitlines():
+        line = line.strip()
+        if line.startswith("# Start StevenBlack"):
+            start_conversion = True
+            continue
+        if line == end_marker:
+            break
+        if start_conversion and line and not line.startswith("#") and not line.startswith("0.0.0.0"):
+            parts = line.split()
+            if len(parts) >= 2:
+                domain = parts[1]
+                domain_list.append(domain)
     return {"version": 1, "rules": [{"domain": domain_list}]}
+
 
 def main():
     os.makedirs(output_dir, exist_ok=True)
