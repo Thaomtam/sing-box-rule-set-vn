@@ -1,5 +1,7 @@
 # generate_readme.py
 
+import os
+
 def generate_readme(files):
     with open("README.md", "w") as readme_file:
         readme_file.write("# Sing-box Rule Set for VietNam\n")
@@ -12,7 +14,8 @@ def generate_readme(files):
         readme_file.write("## Usage\n\n")
         readme_file.write("You can use these rule sets with the sing-box application.\n")
 
-# files là danh sách các tệp JSON đã được tạo
+# Thêm dòng code này để lấy danh sách các tệp JSON đã được tạo
+files = ["./rule-set/block.json", "./rule-set/adway.json"]
 
 if __name__ == "__main__":
     generate_readme(files)
