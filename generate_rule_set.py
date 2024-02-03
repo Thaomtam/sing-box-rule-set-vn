@@ -54,18 +54,30 @@ def convert_black(data):
     domain_list = []
     start_conversion = False
     end_marker = "# End StevenBlack"
-    for line in data.splitlines():
+
+    # Split data by lines
+    lines = data.splitlines()
+
+    # Start from the beginning of the file
+    for i, line in enumerate(lines):
         line = line.strip()
+        
+        # Check if the line contains the start marker
         if line.startswith("# Start StevenBlack"):
             start_conversion = True
             continue
+
+        # Check if the line contains the end marker
         if line == end_marker:
             break
-        if start_conversion and not line.startswith("#") and not line.startswith("0.0.0.0"):
+
+        # Process the line if conversion is started and the line is not a comment or empty
+        if start_conversion and line and not line.startswith("#") and not line.startswith("0.0.0.0"):
             parts = line.split()
             if len(parts) >= 2:
                 domain = parts[1]
                 domain_list.append(domain)
+
     return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def main():
