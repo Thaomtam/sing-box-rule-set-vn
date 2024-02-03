@@ -62,7 +62,8 @@ def convert_black(data):
             parts = line.split()
             if len(parts) >= 2:
                 domain_list.append(parts[1])
-    return {"version": 1, "rules": [{"domain": domain_list}]}
+    return {"version": 1, "rules": [{"domain": domain_list if domain_list else []}]}
+
 
 def main():
     os.makedirs(output_dir, exist_ok=True)
