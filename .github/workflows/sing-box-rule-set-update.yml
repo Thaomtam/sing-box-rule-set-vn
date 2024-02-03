@@ -38,10 +38,6 @@ jobs:
             source venv/bin/activate
             python3 generate_rule_set.py
 
-      # Thêm bước để chạy script replace_tag.py
-      - name: "Run replace_tag.py"
-        run: python replace_tag.py
-
       - name: "Commit and push"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
