@@ -14,8 +14,8 @@ def generate_readme(files):
         readme_file.write("## Usage\n\n")
         readme_file.write("You can use these rule sets with the sing-box application.\n")
 
-# Thêm dòng code này để lấy danh sách các tệp JSON đã được tạo
-files = ["./rule-set/block.json", "./rule-set/adway.json"]
-
-if __name__ == "__main__":
+# Thêm dòng code này để kiểm tra xem tệp README.md đã tồn tại hay chưa
+if not os.path.exists("README.md"):
+    # Thêm dòng code này để lấy danh sách các tệp JSON đã được tạo
+    files = ["./rule-set/block.json", "./rule-set/adway.json"]
     generate_readme(files)
