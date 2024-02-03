@@ -30,7 +30,7 @@ This repository contains the sing-box rule set for Vietnam.
                 "format": "binary",
                 "url": "raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/MVPS.srs"
             },
-			{
+	    {
                 "tag": "Easylist",
                 "type": "remote",
                 "format": "binary",
