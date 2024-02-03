@@ -2,29 +2,29 @@ import re
 import os
 import json
 
-# Đường dẫn đến tệp README.md
-README_FILE = "README.md"
-
-# Đường dẫn đến tệp readme.json
-README_JSON_FILE = "readme.json"
-
 def replace_tags():
-    # Đọc nội dung từ tệp README.md
-    with open(README_FILE, "r") as f:
-        content = f.read()
-    
-    # Đọc các biến từ tệp readme.json
-    with open(README_JSON_FILE, "r") as f:
+    # Đọc tệp readme.json để lấy giá trị của biến VERSION
+    with open('readme.json') as f:
         variables = json.load(f)
+        version = variables.get("VERSION", "")
 
-    # Thực hiện thay thế các thẻ <>
-    for key, value in variables.items():
-        tag = f"<variable-{key}-tag>"
-        content = content.replace(tag, f"`{value}`")
+    # Đọc tất cả các tệp .md
+    readme_files = []
+    for root, dirs, files in os.walk("."):
+        for file in files:
+            if file.endswith(".md"):
+                 readme_files.append(os.path.join(root, file))
 
-    # Ghi nội dung đã được thay thế vào tệp README.md
-    with open(README_FILE, "w") as f:
-        f.write(content)
+    # Thay thế các thẻ trong tệp README.md
+    for filename in readme_files:
+        with open(filename, "r") as f:
+            content = f.read()
+
+        # Thay thế thẻ <VERSION> bằng giá trị từ readme.json
+        content = re.sub(r"<VERSION>", version, content)
+
+        with open(filename, "w") as f:
+            f.write(content)
 
 if __name__ == "__main__":
     replace_tags()
