@@ -50,6 +50,10 @@ def convert_easylist(data):
                 domain_list.append(parts[1].split("^")[0])
     return {"version": 1, "rules": [{"domain": domain_list}]}
 
+def convert_black(data):
+    domain_list = [line.strip() for line in data.splitlines() if line and not line.startswith("#")]
+    return {"version": 1, "rules": [{"domain": domain_list}]}
+
 def main():
     os.makedirs(output_dir, exist_ok=True)
 
@@ -57,7 +61,8 @@ def main():
         ("https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/domain.txt", convert_block, "block"),
         ("https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt", convert_adway, "adway"),
         ("https://winhelp2002.mvps.org/hosts.txt", convert_MVPS, "MVPS"),
-        ("https://raw.githubusercontent.com/easylist/easylist/master/easylist/easylist_adservers.txt", convert_easylist, "easylist")
+        ("https://raw.githubusercontent.com/easylist/easylist/master/easylist/easylist_adservers.txt", convert_easylist, "easylist"),
+        ("https://raw.githubusercontent.com/StevenBlack/hosts/master/data/StevenBlack/hosts", convert_black, "black")
     ]
 
     files = []
