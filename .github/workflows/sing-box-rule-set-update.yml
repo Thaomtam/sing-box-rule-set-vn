@@ -38,6 +38,14 @@ jobs:
             source venv/bin/activate
             python3 generate_rule_set.py
 
+      - name: "Update README.md"
+        uses: muesli/readme-scribe@master
+        env:
+          PERSONAL_GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+        with:
+          template: "github-profile.tpl" # Chỉ định đường dẫn chính xác của temple
+          writeTo: "README.md"
+
       - name: "Commit and push"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
