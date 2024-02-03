@@ -58,11 +58,12 @@ def convert_black(data):
         if line.startswith("# blacklist"):
             start_conversion = True
             continue
-        if start_conversion and line and not line.startswith("#"):
+        if start_conversion and line and not line.startswith("#") and not line.startswith("0.0.0.0"):
             parts = line.split()
             if len(parts) >= 2:
-                domain_list.append(parts[1])
+                domain_list.append(parts[0])
     return {"version": 1, "rules": [{"domain": domain_list if domain_list else []}]}
+
 
 
 def main():
