@@ -32,6 +32,10 @@ jobs:
             set -Eeuo pipefail
             source venv/bin/activate
             python3 generate_rule_set.py
+      - name: "Generate README.md"
+        run: |
+            set -Eeuo pipefail
+            python3 generate_readme.py  # Thêm lệnh tạo README.md vào đây
       - name: "Commit and push"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
