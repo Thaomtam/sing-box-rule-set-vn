@@ -22,10 +22,10 @@ def convert_to_domain_list(data):
     domain_list = []
     for line in data.splitlines():
         line = line.strip()
-        if line and not line.startswith("#"):
-            parts = line.split()
-            if len(parts) >= 2:
-                domain = parts[1].split("#")[0].split("||")[-1].split("^")[0].lstrip("www.")
+        if line and not line.startswith("#") and not line.startswith("!"):
+            parts = line.split("||")
+            if len(parts) > 1:
+                domain = parts[1].split("^")[0].lstrip("www.")
                 if domain and "." in domain:  # Kiểm tra nếu tên miền không rỗng và chứa dấu chấm (để loại bỏ các từ khóa)
                     domain_list.append(domain)
     return {"version": 1, "rules": [{"domain": domain_list}]}
