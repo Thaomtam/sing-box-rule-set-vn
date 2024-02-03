@@ -3,7 +3,6 @@ import requests
 import json
 
 output_dir = "./rule-set"
-readme_path = "./README.md"
 
 def write_json_file(data, filepath):
     with open(filepath, "w") as f:
@@ -49,31 +48,6 @@ def convert_block(data):
         }]
     }
 
-def generate_readme(files):
-    with open(readme_path, "w") as readme_file:
-        readme_file.write("# sing-box rule-set for VietNam\n")
-        readme_file.write("Generated & aggregated daily from multiple sources. Rule sets available at `rule-set` branch.\n\n")
-        readme_file.write("```json\n")
-        readme_file.write("{\n")
-        readme_file.write('    "route": {\n')
-        readme_file.write('        "rule_set": [\n')
-        for filepath in files:
-            readme_file.write('            {\n')
-            readme_file.write('                "tag": "' + os.path.splitext(os.path.basename(filepath))[0] + '",\n')
-            readme_file.write('                "type": "remote",\n')
-            readme_file.write('                "format": "binary",\n')
-            readme_file.write('                "url": "https://raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/' + os.path.basename(filepath) + '",\n')
-            readme_file.write('                "download_detour": "proxy"\n')
-            readme_file.write('            },\n')
-        readme_file.write('        ]\n')
-        readme_file.write('    }\n')
-        readme_file.write("}\n")
-        readme_file.write("```\n\n")
-        
-        readme_file.write("### Block\n\n")
-        for filepath in files:
-            readme_file.write("[Rule set](/../../raw/rule-set/" + os.path.basename(filepath).replace(".json", ".srs") + ").[Rule set](/../../raw/rule-set/" + os.path.basename(filepath) + ")\n")
-
 def main():
     os.makedirs(output_dir, exist_ok=True)
 
@@ -95,8 +69,6 @@ def main():
     for filepath in files:
         srs_path = filepath.replace(".json", ".srs")
         os.system(f"sing-box rule-set compile --output {srs_path} {filepath}")
-
-    generate_readme(files)
 
 if __name__ == "__main__":
     main()
