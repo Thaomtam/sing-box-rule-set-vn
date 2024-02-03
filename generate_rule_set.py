@@ -53,31 +53,15 @@ def convert_easylist(data):
 def convert_black(data):
     domain_list = []
     start_conversion = False
-    end_marker = "# End StevenBlack"
-
-    # Split data by lines
-    lines = data.splitlines()
-
-    # Start from the beginning of the file
-    for i, line in enumerate(lines):
+    for line in data.splitlines():
         line = line.strip()
-        
-        # Check if the line contains the start marker
-        if line.startswith("# Start StevenBlack"):
+        if line.startswith("# blacklist"):
             start_conversion = True
             continue
-
-        # Check if the line contains the end marker
-        if line == end_marker:
-            break
-
-        # Process the line if conversion is started and the line is not a comment or empty
-        if start_conversion and line and not line.startswith("#") and not line.startswith("0.0.0.0"):
+        if start_conversion and line and not line.startswith("#"):
             parts = line.split()
             if len(parts) >= 2:
-                domain = parts[1]
-                domain_list.append(domain)
-
+                domain_list.append(parts[1])
     return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def main():
