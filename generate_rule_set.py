@@ -41,11 +41,17 @@ def convert_MVPS(data):
     return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def convert_easylist(data):
-    domain_list = [line.split("||")[1].split("^")[0] for line in data.splitlines() if line.strip() and not line.startswith("!") and "github.com" not in line]
+    domain_list = []
+    for line in data.splitlines():
+        line = line.strip()
+        if line and not line.startswith("!") and "github.com" not in line:
+            parts = line.split("||")
+            if len(parts) >= 2:
+                domain_list.append(parts[1].split("^")[0])
     return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def convert_black(data):
-    domain_list = [line.split()[1] for line in data.splitlines() if line.strip() and not line.startswith("#") and not line.startswith("0.0.0.0")]
+    domain_list = [line.split()[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
     return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def main():
