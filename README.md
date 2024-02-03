@@ -10,25 +10,31 @@ This repository contains the sing-box rule set for Vietnam.
                 "tag": "Block",
                 "type": "remote",
                 "format": "binary",
-                "url": "raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/block.json"
+                "url": "raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/block.srs"
             },
             {
                 "tag": "Adway",
                 "type": "remote",
                 "format": "binary",
-                "url": "raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/adway.json"
+                "url": "raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/adway.srs"
             },
             {
                 "tag": "Black",
                 "type": "remote",
                 "format": "binary",
-                "url": "raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/black.json"
+                "url": "raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/black.srs"
             },
             {
                 "tag": "MVPS",
                 "type": "remote",
                 "format": "binary",
-                "url": "raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/MVPS.json"
+                "url": "raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/MVPS.srs"
+            },
+			{
+                "tag": "Easylist",
+                "type": "remote",
+                "format": "binary",
+                "url": "raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/easylist.srs"
             }
         ]
     }
@@ -41,6 +47,7 @@ This repository contains the sing-box rule set for Vietnam.
 - **Adway Rule Set:** [Download](/../../raw/rule-set/adway.srs).[Link](/../../raw/rule-set/adway.json)
 - **MVPS Rule Set:** [Download](/../../raw/rule-set/MVPS.srs).[Link](/../../raw/rule-set/MVPS.json)
 - **Black Rule Set:** [Download](/../../raw/rule-set/black.srs).[Link](/../../raw/rule-set/black.json)
+- **Easylist Rule Set:** [Download](/../../raw/rule-set/black.srs).[Link](/../../raw/rule-set/easylist.json)
 ## Usage
 
 You can use these rule sets with the sing-box application.
