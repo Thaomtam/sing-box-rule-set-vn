@@ -19,7 +19,7 @@ def fetch_and_convert_url(url, convert_function, function_name):
     return None
 
 def convert_block(data):
-    domain_list = [line.strip() for line in data.splitlines() if line and not line.startswith("#")]
+    domain_list = [line.strip() for line in data.splitlines() if line.strip() and not line.startswith("#")]
     return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def convert_adway(data):
