@@ -1,1 +1,12 @@
-Câu trả lời này là phiên bản `1.0`. Nó sẽ được cập nhật tự động bằng cách tải tệp `json` và sử dụng GitHub Action.
+# Sing-box Rule Set for VietNam
+
+This repository contains the sing-box rule set for Vietnam.
+
+## Rule Sets
+
+- **Block Rule Set:** [Download](/../../raw/rule-set/block.srs)
+- **Adway Rule Set:** [Download](/../../raw/rule-set/adway.srs)
+
+## Usage
+
+You can use these rule sets with the sing-box application.
