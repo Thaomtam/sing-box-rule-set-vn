@@ -51,7 +51,7 @@ def convert_easylist(data):
     return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def convert_black(data):
-    domain_list = [line.strip() for line in data.splitlines() if line and not line.startswith("#")]
+    domain_list = [line.split()[-1] for line in data.splitlines() if line and not line.startswith("#")]
     return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def main():
