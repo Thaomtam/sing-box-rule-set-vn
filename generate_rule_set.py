@@ -41,17 +41,11 @@ def convert_MVPS(data):
     return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def convert_easylist(data):
-    domain_list = []
-    for line in data.splitlines():
-        line = line.strip()
-        if line and not line.startswith("!") and "github.com" not in line:
-            parts = line.split("||")
-            if len(parts) >= 2:
-                domain_list.append(parts[1].split("^")[0])
+    domain_list = [line.split("||")[1].split("^")[0] for line in data.splitlines() if line.strip() and not line.startswith("!") and "github.com" not in line]
     return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def convert_black(data):
-    domain_list = [line.split()[-1] for line in data.splitlines() if line and not line.startswith("#")]
+    domain_list = [line.split()[1] for line in data.splitlines() if line.strip() and not line.startswith("#") and not line.startswith("0.0.0.0")]
     return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def main():
@@ -62,7 +56,7 @@ def main():
         ("https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt", convert_adway, "adway"),
         ("https://winhelp2002.mvps.org/hosts.txt", convert_MVPS, "MVPS"),
         ("https://raw.githubusercontent.com/easylist/easylist/master/easylist/easylist_adservers.txt", convert_easylist, "easylist"),
-        ("https://raw.githubusercontent.com/StevenBlack/hosts/master/data/StevenBlack/hosts", convert_black, "black")
+        ("https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts", convert_black, "black")
     ]
 
     files = []
