@@ -1,7 +1,8 @@
 # Sing-box Rule Set for VietNam
 
 This repository contains the sing-box rule set for Vietnam.
-``
+
+```
 {
     "route": {
         "rule_set": [
@@ -32,7 +33,8 @@ This repository contains the sing-box rule set for Vietnam.
         ]
     }
 }
-``
+```
+
 ## Rule Sets
 
 - **Block Rule Set:** [Download](/../../raw/rule-set/block.srs).[Link](/../../raw/rule-set/block.json)
