@@ -39,7 +39,7 @@ This repository contains the sing-box rule set for Vietnam.
 
 - **Block Rule Set:** [Download](/../../raw/rule-set/block.srs).[Link](/../../raw/rule-set/block.json)
 - **Adway Rule Set:** [Download](/../../raw/rule-set/adway.srs).[Link](/../../raw/rule-set/adway.json)
-- **Black Rule Set:** [Download](/../../raw/rule-set/Black.srs).[Link](/../../raw/rule-set/Black.json)
+- **Black Rule Set:** [Download](/../../raw/rule-set/Black.srs).[Link](/../../raw/rule-set/black.json)
 - **MVPS Rule Set:** [Download](/../../raw/rule-set/MVPS.srs).[Link](/../../raw/rule-set/MVPS.json)
 ## Usage
 
