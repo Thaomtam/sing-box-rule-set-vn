@@ -1,8 +1,10 @@
 name: "Update sing-box rule-set"
 
 on:
-  schedule:
-    - cron: "0 0 * * *"
+  push:
+    paths:
+      - "*.md"
+      - "readme.json"
   workflow_dispatch:
 
 jobs:
@@ -14,6 +16,11 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@v4
+
+      # Thêm bước để chạy script replace_tag.py
+      - name: "Run replace_tag.py"
+        run: python replace_tag.py
+
       - name: "Setup sing-box"
         env:
           SING_BOX_DEB_URL: "https://github.com/SagerNet/sing-box/releases/download/v1.8.4/sing-box_1.8.4_linux_amd64.deb"
@@ -21,21 +28,20 @@ jobs:
             set -Eeuo pipefail
             wget -O sing-box.deb $SING_BOX_DEB_URL
             sudo dpkg -i sing-box.deb
+
       - name: "Setup python venv"
         run: |
             set -Eeuo pipefail
             python3 -m venv venv
             source venv/bin/activate
             pip3 install -r requirements.txt
+
       - name: "Update rule-set"
         run: |
             set -Eeuo pipefail
             source venv/bin/activate
             python3 generate_rule_set.py
-      - name: "Generate README.md"
-        run: |
-            set -Eeuo pipefail
-            python3 generate_readme.py  # Thêm lệnh tạo README.md vào đây
+
       - name: "Commit and push"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
