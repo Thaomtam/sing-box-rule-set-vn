@@ -17,10 +17,6 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v4
 
-      # Thêm bước để chạy script replace_tag.py
-      - name: "Run replace_tag.py"
-        run: python replace_tag.py
-
       - name: "Setup sing-box"
         env:
           SING_BOX_DEB_URL: "https://github.com/SagerNet/sing-box/releases/download/v1.8.4/sing-box_1.8.4_linux_amd64.deb"
@@ -41,6 +37,10 @@ jobs:
             set -Eeuo pipefail
             source venv/bin/activate
             python3 generate_rule_set.py
+
+      # Thêm bước để chạy script replace_tag.py
+      - name: "Run replace_tag.py"
+        run: python replace_tag.py
 
       - name: "Commit and push"
         env:
