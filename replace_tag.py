@@ -2,28 +2,29 @@ import re
 import os
 import json
 
-# read all .md files
-readmefiles = []
-for root, dirs, files in os.walk("."):
-    for file in files:
-        if file.endswith(".md"):
-             readmefiles.append(os.path.join(root, file))
+# Đường dẫn đến tệp README.md
+README_FILE = "README.md"
 
-# load variable json
-with open('readme.json') as f:
-  var_dic = json.load(f)
+# Đường dẫn đến tệp readme.json
+README_JSON_FILE = "readme.json"
 
-# match pattern (<variable-*.?-tag>)(`*.?`)
-# example: (<variable-VERSION-tag>)(`1.1`)
-for filename in readmefiles:
-    with open(filename,"r") as f:
-      content = f.read()
+def replace_tags():
+    # Đọc nội dung từ tệp README.md
+    with open(README_FILE, "r") as f:
+        content = f.read()
     
-    # update readme variables
-    for key, value in var_dic.items():
-      pattern = r"(<variable-{}-tag>)(`.*?`)".format(key)
-      replacement = r"\1`{}`".format(value)
-      content = re.sub(pattern, replacement, content)
+    # Đọc các biến từ tệp readme.json
+    with open(README_JSON_FILE, "r") as f:
+        variables = json.load(f)
 
-    with open(filename,"w") as f:
-      f.write(content)
+    # Thực hiện thay thế các thẻ <>
+    for key, value in variables.items():
+        tag = f"<variable-{key}-tag>"
+        content = content.replace(tag, f"`{value}`")
+
+    # Ghi nội dung đã được thay thế vào tệp README.md
+    with open(README_FILE, "w") as f:
+        f.write(content)
+
+if __name__ == "__main__":
+    replace_tags()
