@@ -19,7 +19,15 @@ def fetch_and_convert_url(url, convert_function, function_name):
     return None
 
 def convert_to_domain_list(data):
-    return [line.split()[1].split("#")[0].split("||")[1].split("^")[0].lstrip("www.") for line in data.splitlines() if line.strip() and not line.startswith("#")]
+    domain_list = []
+    for line in data.splitlines():
+        line = line.strip()
+        if line and not line.startswith("#"):
+            parts = line.split()
+            if len(parts) >= 2:
+                domain = parts[1].split("#")[0].split("||")[-1].split("^")[0].lstrip("www.")
+                domain_list.append(domain)
+    return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def main():
     os.makedirs(output_dir, exist_ok=True)
