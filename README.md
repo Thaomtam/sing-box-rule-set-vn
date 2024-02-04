@@ -10,31 +10,36 @@ This repository contains the sing-box rule set for Vietnam.
                 "tag": "Geosite-vn",
                 "type": "remote",
                 "format": "binary",
-                "url": "raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/block.srs"
+                "url": ""https://raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/block.srs",
+				"download_detour": "proxy"
             },
             {
                 "tag": "Adway",
                 "type": "remote",
                 "format": "binary",
-                "url": "raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/adway.srs"
+                "url": ""https://raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/adway.srs",
+				"download_detour": "proxy"
             },
             {
                 "tag": "Black",
                 "type": "remote",
                 "format": "binary",
-                "url": "raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/black.srs"
+                "url": ""https://raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/black.srs",
+				"download_detour": "proxy"
             },
             {
                 "tag": "MVPS",
                 "type": "remote",
                 "format": "binary",
-                "url": "raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/MVPS.srs"
+                "url": ""https://raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/MVPS.srs",
+				"download_detour": "proxy"
             },
-	    {
+			{
                 "tag": "Easylist",
                 "type": "remote",
                 "format": "binary",
-                "url": "raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/easylist.srs"
+                "url": ""https://raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/easylist.srs",
+				"download_detour": "proxy"
             }
         ]
     }
