@@ -54,14 +54,14 @@ def convert_easylist(data):
 def black(data):
     domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
     # Loại bỏ các tên miền không mong muốn
-    unwanted_domains = {"localhost", "broadcasthost", "local", "ip6-localhost", "ip6-loopback", "0.0.0.0", "1", "0", "2", "3"}
+    unwanted_domains = {"localhost", "broadcasthost", "local", "ip6-localhost", "ip6-loopback", "0.0.0.0", "localhost.localdomain", "1", "0", "2", "3"}
     domain_list = [domain for domain in domain_list if domain not in unwanted_domains]
     return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def yoyo(data):
     domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
     # Loại bỏ các tên miền không mong muốn
-    unwanted_domains = {"localhost", "broadcasthost", "local", "ip6-localhost", "ip6-loopback", "0.0.0.0", "1", "0", "2", "3"}
+    unwanted_domains = {"localhost", "broadcasthost", "local", "ip6-localhost", "ip6-loopback", "0.0.0.0", "localhost.localdomain", "1", "0", "2", "3"}
     domain_list = [domain for domain in domain_list if domain not in unwanted_domains]
     return {"version": 1, "rules": [{"domain": domain_list}]}
 
