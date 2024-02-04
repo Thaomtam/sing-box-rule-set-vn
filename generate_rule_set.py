@@ -59,7 +59,8 @@ def black(data):
     return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def yoyo(data):
-    return {"version": 1, "rules": [{"domain": []}]}
+    domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#") and not line.startswith("0.0.0.0")]
+    return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def main():
     os.makedirs(output_dir, exist_ok=True)
