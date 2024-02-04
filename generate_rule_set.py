@@ -1,6 +1,7 @@
 import os
 import requests
 import json
+import re
 
 output_dir = "./rule-set"
 
@@ -50,21 +51,14 @@ def convert_easylist(data):
                 domain_list.append(parts[1].split("^")[0])
     return {"version": 1, "rules": [{"domain": domain_list}]}
 
-def convert_black(data):
-    domain_list = []
-    start_conversion = False
-    for line in data.splitlines():
-        line = line.strip()
-        if line.startswith("# blacklist"):
-            start_conversion = True
-            continue
-        if start_conversion and line and not line.startswith("#") and not line.startswith("0.0.0.0"):
-            parts = line.split()
-            if len(parts) >= 2:
-                domain = parts[-1].split("#")[0]
-                domain_list.append(domain)
-    return {"version": 1, "rules": [{"domain": domain_list if domain_list else []}]}
-    
+def black(data):
+    domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
+    return {"version": 1, "rules": [{"domain": domain_list}]}
+
+def yoyo(data):
+    domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#") and not line.startswith("0.0.0.0")]
+    return {"version": 1, "rules": [{"domain": domain_list}]}
+
 def main():
     os.makedirs(output_dir, exist_ok=True)
 
@@ -73,7 +67,8 @@ def main():
         ("https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt", convert_adway, "adway"),
         ("https://winhelp2002.mvps.org/hosts.txt", convert_MVPS, "MVPS"),
         ("https://raw.githubusercontent.com/easylist/easylist/master/easylist/easylist_adservers.txt", convert_easylist, "easylist"),
-        ("https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts", convert_black, "black")
+        ("https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts", black, "black"),
+        ("https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext&useip=0.0.0.0", yoyo, "yoyo")
     ]
 
     files = []
