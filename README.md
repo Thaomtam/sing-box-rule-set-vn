@@ -4,7 +4,29 @@
 Đây là một bộ tập luật dành cho ứng dụng Sing Box, được tối ưu hóa cho người dùng tiếng Việt để chặn các quảng cáo và các nội dung không mong muốn khác trên internet.
 
 ## Bộ tập luật
-Bộ tập luật này bao gồm các tập luật sau:
+
+### Tập luật chặn quảng cáo
+Bộ tập luật này chứa các quy tắc để chặn quảng cáo và các nội dung không mong muốn.
+
+- **Geosite-vn Rule Set:** [Download](/../../raw/rule-set/block.srs) | [Link](/../../raw/rule-set/block.json)
+- **Adway Rule Set:** [Download](/../../raw/rule-set/adway.srs) | [Link](/../../raw/rule-set/adway.json)
+- **MVPS Rule Set:** [Download](/../../raw/rule-set/MVPS.srs) | [Link](/../../raw/rule-set/MVPS.json)
+- **Easylist Rule Set:** [Download](/../../raw/rule-set/black.srs) | [Link](/../../raw/rule-set/easylist.json)
+- **Yoyo Rule Set:** [Download](/../../raw/rule-set/yoyo.srs) | [Link](/../../raw/rule-set/yoyo.json)
+- **Black Rule Set:** [Download](/../../raw/rule-set/black.srs) | [Link](/../../raw/rule-set/black.json)
+
+### Tập luật chặn các loại nội dung cụ thể
+Bộ tập luật này chứa các quy tắc để chặn các loại nội dung cụ thể như mạng đen, trò chơi cá cược và các trang web quảng cáo.
+
+- **Threat Rule Set:** [Download](/../../raw/rule-set/threat.srs) | [Link](/../../raw/rule-set/threat.json) (*Chặn các trang web đe dọa*)
+- **Casino Rule Set:** [Download](/../../raw/rule-set/casino.srs) | [Link](/../../raw/rule-set/casino.json) (*Chặn các trang web trò chơi cá cược*)
+
+### Tập luật chặn quảng cáo từ các máy chủ quảng cáo
+Bộ tập luật này chứa các quy tắc để chặn quảng cáo từ các máy chủ quảng cáo đã biết.
+
+- **Adservers Rule Set:** [Download](/../../raw/rule-set/adservers.srs) | [Link](/../../raw/rule-set/adservers.json) (*Chặn các máy chủ quảng cáo*)
+
+*Ghi chú: Việc sử dụng các bộ tập luật này giúp giữ gìn sự sạch đẹp môi trường mạng bằng cách chặn các quảng cáo và các nội dung không mong muốn khác trên internet.*
 ```
 {
     "route": {
@@ -51,42 +73,28 @@ Bộ tập luật này bao gồm các tập luật sau:
                 "url": "https://raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/easylist.srs",
                 "download_detour": "proxy"
             },
-			{
+            {
                 "tag": "Threat",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/threat.srs",
                 "download_detour": "proxy"
             },
-			{
+            {
                 "tag": "Casino",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/casino.srs",
                 "download_detour": "proxy"
             },
-			{
+            {
                 "tag": "Adservers",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/adservers.srs",
                 "download_detour": "proxy"
-            },
+            }
         ]
     }
 }
 ```
-# Block 
-
-- **Geosite-vn Rule Set:** [Download](/../../raw/rule-set/block.srs).[Link](/../../raw/rule-set/block.json)
-- **Adway Rule Set:** [Download](/../../raw/rule-set/adway.srs).[Link](/../../raw/rule-set/adway.json)
-- **MVPS Rule Set:** [Download](/../../raw/rule-set/MVPS.srs).[Link](/../../raw/rule-set/MVPS.json)
-- **Easylist Rule Set:** [Download](/../../raw/rule-set/black.srs).[Link](/../../raw/rule-set/easylist.json)
-- **Yoyo Rule Set:** [Download](/../../raw/rule-set/yoyo.srs).[Link](/../../raw/rule-set/yoyo.json)
-- **Black Rule Set:** [Download](/../../raw/rule-set/black.srs).[Link](/../../raw/rule-set/black.json)
-- **Threat Rule Set:** [Download](/../../raw/rule-set/threat.srs).[Link](/../../raw/rule-set/threat.json)
-- **Casino Rule Set:** [Download](/../../raw/rule-set/casino.srs).[Link](/../../raw/rule-set/casino.json)
-- **Adservers Rule Set:** [Download](/../../raw/rule-set/adservers.srs).[Link](/../../raw/rule-set/adservers.json)
-
-## Usage
-GIỮ GÌN SỰ SẠCH ĐẸP MÔI TRƯỜNG MẠNG
