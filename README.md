@@ -57,12 +57,19 @@ Bộ tập luật này bao gồm các tập luật sau:
                 "format": "binary",
                 "url": "https://raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/threat.srs",
                 "download_detour": "proxy"
+            },
+			{
+                "tag": "Casino",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/casino.srs",
+                "download_detour": "proxy"
             }
         ]
     }
 }
 ```
-# Rule set 
+# Block 
 
 - **Geosite-vn Rule Set:** [Download](/../../raw/rule-set/block.srs).[Link](/../../raw/rule-set/block.json)
 - **Adway Rule Set:** [Download](/../../raw/rule-set/adway.srs).[Link](/../../raw/rule-set/adway.json)
@@ -71,7 +78,7 @@ Bộ tập luật này bao gồm các tập luật sau:
 - **Yoyo Rule Set:** [Download](/../../raw/rule-set/yoyo.srs).[Link](/../../raw/rule-set/yoyo.json)
 - **Black Rule Set:** [Download](/../../raw/rule-set/black.srs).[Link](/../../raw/rule-set/black.json)
 - **Threat Rule Set:** [Download](/../../raw/rule-set/threat.srs).[Link](/../../raw/rule-set/threat.json)
+- **Casino Rule Set:** [Download](/../../raw/rule-set/casino.srs).[Link](/../../raw/rule-set/casino.json)
 
 ## Usage
-
-You can use these rule sets with the sing-box application.
+GIỮ GÌN SỰ SẠCH ĐẸP MÔI TRƯỜNG MẠNG
