@@ -85,6 +85,16 @@ def extract_casino(url):
         print("Failed to fetch casino file.")
         return []
 
+def extract_adservers(url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        lines = response.text.split('\n')
+        adservers_list = [line.strip()[2:].split('^')[0] for line in lines if line.strip() and not line.startswith('!')]
+        return adservers_list
+    else:
+        print("Failed to fetch adservers file.")
+        return []
+
 def main():
     os.makedirs(output_dir, exist_ok=True)
 
@@ -104,6 +114,14 @@ def main():
     casino_filepath = os.path.join(output_dir, "casino.json")
     write_json_file({"version": 1, "rules": [{"domain": casino_domain_list}]}, casino_filepath)
 
+    # Lấy danh sách tên miền từ adservers
+    adservers_url = "https://raw.githubusercontent.com/bigdargon/hostsVN/master/filters/adservers-all.txt"
+    adservers_domain_list = extract_adservers(adservers_url)
+
+    # Ghi danh sách tên miền từ adservers vào file json
+    adservers_filepath = os.path.join(output_dir, "adservers.json")
+    write_json_file({"version": 1, "rules": [{"domain": adservers_domain_list}]}, adservers_filepath)
+
     url_convert_functions = [
         ("https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/domain.txt", convert_block, "block"),
         ("https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt", convert_adway, "adway"),
@@ -113,7 +131,7 @@ def main():
         ("https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext&useip=0.0.0.0", yoyo, "yoyo")
     ]
 
-    files = [threat_filepath, casino_filepath]  # Đưa danh sách threat và casino vào files
+    files = [threat_filepath, casino_filepath, adservers_filepath]  # Đưa danh sách các tệp vào files
 
     for url, convert_function, function_name in url_convert_functions:
         filepath = fetch_and_convert_url(url, convert_function, function_name)
