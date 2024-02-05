@@ -51,20 +51,27 @@ Bộ tập luật này bao gồm các tập luật sau:
                 "url": "https://raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/easylist.srs",
                 "download_detour": "proxy"
             },
-	    {
+			{
                 "tag": "Threat",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/threat.srs",
                 "download_detour": "proxy"
             },
-	    {
+			{
                 "tag": "Casino",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/casino.srs",
                 "download_detour": "proxy"
-            }
+            },
+			{
+                "tag": "Adservers",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/adservers.srs",
+                "download_detour": "proxy"
+            },
         ]
     }
 }
@@ -79,6 +86,7 @@ Bộ tập luật này bao gồm các tập luật sau:
 - **Black Rule Set:** [Download](/../../raw/rule-set/black.srs).[Link](/../../raw/rule-set/black.json)
 - **Threat Rule Set:** [Download](/../../raw/rule-set/threat.srs).[Link](/../../raw/rule-set/threat.json)
 - **Casino Rule Set:** [Download](/../../raw/rule-set/casino.srs).[Link](/../../raw/rule-set/casino.json)
+- **Adservers Rule Set:** [Download](/../../raw/rule-set/adservers.srs).[Link](/../../raw/rule-set/adservers.json)
 
 ## Usage
 GIỮ GÌN SỰ SẠCH ĐẸP MÔI TRƯỜNG MẠNG
