@@ -75,6 +75,10 @@ def extract_threat(url):
         print("Failed to fetch threat file.")
         return []
 
+def convert_casino(data):
+    domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
+    return {"version": 1, "rules": [{"domain": domain_list}]}
+
 def main():
     os.makedirs(output_dir, exist_ok=True)
 
@@ -86,6 +90,14 @@ def main():
     threat_filepath = os.path.join(output_dir, "threat.json")
     write_json_file({"version": 1, "rules": [{"domain": threat_domain_list}]}, threat_filepath)
 
+    # Lấy danh sách tên miền từ casino
+    casino_url = "https://raw.githubusercontent.com/bigdargon/hostsVN/master/extensions/gambling/filter.txt"
+    casino_domain_list = extract_casino(casino_url)
+
+    # Ghi danh sách tên miền từ casino vào file json
+    casino_filepath = os.path.join(output_dir, "casino.json")
+    write_json_file({"version": 1, "rules": [{"domain": casino_domain_list}]}, casino_filepath)
+
     url_convert_functions = [
         ("https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/domain.txt", convert_block, "block"),
         ("https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt", convert_adway, "adway"),
@@ -95,7 +107,7 @@ def main():
         ("https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext&useip=0.0.0.0", yoyo, "yoyo")
     ]
 
-    files = [threat_filepath]  # Đưa danh sách threat vào files
+    files = [threat_filepath, casino_filepath]  # Đưa danh sách threat và casino vào files
 
     for url, convert_function, function_name in url_convert_functions:
         filepath = fetch_and_convert_url(url, convert_function, function_name)
