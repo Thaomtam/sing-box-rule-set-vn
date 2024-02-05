@@ -51,14 +51,14 @@ Bộ tập luật này bao gồm các tập luật sau:
                 "url": "https://raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/easylist.srs",
                 "download_detour": "proxy"
             },
-			{
+	    {
                 "tag": "Threat",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://raw.githubusercontent.com/thaomtam/sing-box-rule-set-vn/rule-set/threat.srs",
                 "download_detour": "proxy"
             },
-			{
+	    {
                 "tag": "Casino",
                 "type": "remote",
                 "format": "binary",
