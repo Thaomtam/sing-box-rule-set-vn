@@ -11,9 +11,10 @@ Bộ tập luật này chứa các quy tắc để chặn quảng cáo và các 
 - **Geosite-vn Rule Set:** [Download](/../../raw/rule-set/block.srs) | [Link](/../../raw/rule-set/block.json)
 - **Adway Rule Set:** [Download](/../../raw/rule-set/adway.srs) | [Link](/../../raw/rule-set/adway.json)
 - **MVPS Rule Set:** [Download](/../../raw/rule-set/MVPS.srs) | [Link](/../../raw/rule-set/MVPS.json)
-- **Easylist Rule Set:** [Download](/../../raw/rule-set/black.srs) | [Link](/../../raw/rule-set/easylist.json)
+- **Easylist Rule Set:** [Download](/../../raw/rule-set/easylist.srs) | [Link](/../../raw/rule-set/easylist.json)
 - **Yoyo Rule Set:** [Download](/../../raw/rule-set/yoyo.srs) | [Link](/../../raw/rule-set/yoyo.json)
 - **Black Rule Set:** [Download](/../../raw/rule-set/black.srs) | [Link](/../../raw/rule-set/black.json)
+- **Anudeep Rule Set:** [Download](/../../raw/rule-set/anudeep.srs) | [Link](/../../raw/rule-set/anudeep.json)
 
 ### Tập luật chặn các loại nội dung cụ thể
 Bộ tập luật này chứa các quy tắc để chặn các loại nội dung cụ thể như mạng đen, trò chơi cá cược và các trang web quảng cáo.
