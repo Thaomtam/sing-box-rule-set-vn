@@ -115,7 +115,59 @@ def Kninja(data):
     }
     domain_list = [domain for domain in domain_list if domain not in unwanted_domains]
     return {"version": 1, "rules": [{"domain": domain_list}]}
-                                  
+
+def Redirect(data):
+    domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
+    # Loại bỏ các tên miền không mong muốn
+    unwanted_domains = {
+        "127.0.0.1",
+        "255.255.255.255",
+        "::1",
+        "fe00::0",
+        "ff02::1",
+        "ff02::2",
+        "ff02::3",
+        "localhost",
+        "broadcasthost",
+        "local",
+        "ip6-localhost",
+        "ip6-loopback",
+        "0.0.0.0",
+        "localhost.localdomain",
+        "1",
+        "0",
+        "2",
+        "3"
+    }
+    domain_list = [domain for domain in domain_list if domain not in unwanted_domains]
+    return {"version": 1, "rules": [{"domain": domain_list}]}
+
+def Facebook(data):
+    domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
+    # Loại bỏ các tên miền không mong muốn
+    unwanted_domains = {
+        "127.0.0.1",
+        "255.255.255.255",
+        "::1",
+        "fe00::0",
+        "ff02::1",
+        "ff02::2",
+        "ff02::3",
+        "localhost",
+        "broadcasthost",
+        "local",
+        "ip6-localhost",
+        "ip6-loopback",
+        "0.0.0.0",
+        "localhost.localdomain",
+        "1",
+        "0",
+        "2",
+        "3"
+    }
+    domain_list = [domain for domain in domain_list if domain not in unwanted_domains]
+    return {"version": 1, "rules": [{"domain": domain_list}]}
+                                          
 def extract_threat(url):
     response = requests.get(url)
     if response.status_code == 200:
@@ -184,7 +236,9 @@ def main():
         ("https://hosts.anudeep.me/mirror/adservers.txt", anudeep, "anudeep"),
         ("https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Extension/GoodbyeAds-Xiaomi-Extension.txt", xiaomi, "xiaomi"),
         ("https://www.github.developerdan.com/hosts/lists/ads-and-tracking-extended.txt", dan, "dan"),
-        ("https://raw.githubusercontent.com/pantsufan/BlockAds/main/hosts", Kninja, "Kninja")
+        ("https://raw.githubusercontent.com/pantsufan/BlockAds/main/hosts", Kninja, "Kninja"),
+        ("https://blocklistproject.github.io/Lists/redirect.txt", Redirect, "Redirect"),
+        ("https://blocklistproject.github.io/Lists/facebook.txt", Facebook, "Facebook")
     ]
 
     files = [threat_filepath, casino_filepath, adservers_filepath]  # Đưa danh sách các tệp vào files
