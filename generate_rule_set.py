@@ -23,6 +23,10 @@ def convert_block(data):
     domain_list = [line.strip() for line in data.splitlines() if line.strip() and not line.startswith("#")]
     return {"version": 1, "rules": [{"domain": domain_list}]}
 
+def convert_spam404(data):
+    domain_list = [line.strip() for line in data.splitlines() if line.strip() and not line.startswith("#")]
+    return {"version": 1, "rules": [{"domain": domain_list}]}
+    
 def convert_adway(data):
     domain_list = [line.split()[1].split("#")[0] for line in data.splitlines() if line.strip() and not line.startswith("#") and "localhost" not in line]
     return {"version": 1, "rules": [{"domain": domain_list}]}
@@ -145,6 +149,7 @@ def main():
 
     url_convert_functions = [
         ("https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/domain.txt", convert_block, "block"),
+        ("https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt", convert_spam404, "spam404"),
         ("https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt", convert_adway, "adway"),
         ("https://winhelp2002.mvps.org/hosts.txt", convert_MVPS, "MVPS"),
         ("https://raw.githubusercontent.com/easylist/easylist/master/easylist/easylist_adservers.txt", convert_easylist, "easylist"),
