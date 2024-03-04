@@ -19,6 +19,8 @@ Bộ tập luật này chứa các quy tắc để chặn quảng cáo và các 
 - **Dan-ads Rule Set:** [Download](/../../raw/rule-set/dan.srs) | [Link](/../../raw/rule-set/dan.json)
 - **Spam404 Rule Set:** [Download](/../../raw/rule-set/spam404.srs) | [Link](/../../raw/rule-set/spam404.json)
 - **Kninja Rule Set:** [Download](/../../raw/rule-set/Kninja.srs) | [Link](/../../raw/rule-set/Kninja.json)
+- **Facebook Rule Set:** [Download](/../../raw/rule-set/Facebook.srs) | [Link](/../../raw/rule-set/Facebook.json)
+- **Redirect Rule Set:** [Download](/../../raw/rule-set/Redirect.srs) | [Link](/../../raw/rule-set/Redirect.json)
 
 ### Tập luật chặn các loại nội dung cụ thể
 Bộ tập luật này chứa các quy tắc để chặn các loại nội dung cụ thể như mạng đen, trò chơi cá cược và các trang web quảng cáo.
