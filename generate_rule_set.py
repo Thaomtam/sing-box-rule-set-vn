@@ -91,8 +91,7 @@ def dan(data):
     return {"version": 1, "rules": [{"domain": domain_list}]}
  
 def Kninja(data):
-    domain_list = [
-        domain.strip()  # Remove leading/trailing whitespace first
+    domain_list = [re.findall(r"[\w\.-]+", line)[1] 
         for line in data.splitlines()
         if line.strip() and not line.startswith("#") and domain.strip()  
     ]  
