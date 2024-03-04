@@ -91,12 +91,8 @@ def dan(data):
     return {"version": 1, "rules": [{"domain": domain_list}]}
  
 def Kninja(data):
-    domain_list = [re.findall(r"[\w\.-]+", line)[1] 
-        for line in data.splitlines()
-        if line.strip() and not line.startswith("#") and domain.strip()  
-    ]  
-
-    # Domain filtering logic
+    domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
+    # Loại bỏ các tên miền không mong muốn
     unwanted_domains = {
         "127.0.0.1",
         "255.255.255.255",
@@ -118,7 +114,6 @@ def Kninja(data):
         "3"
     }
     domain_list = [domain for domain in domain_list if domain not in unwanted_domains]
-
     return {"version": 1, "rules": [{"domain": domain_list}]}
                                   
 def extract_threat(url):
