@@ -16,6 +16,7 @@ Bộ tập luật này chứa các quy tắc để chặn quảng cáo và các 
 - **Black Rule Set:** [Download](/../../raw/rule-set/black.srs) | [Link](/../../raw/rule-set/black.json)
 - **Anudeep Rule Set:** [Download](/../../raw/rule-set/anudeep.srs) | [Link](/../../raw/rule-set/anudeep.json)
 - **Xiaomi-ads Rule Set:** [Download](/../../raw/rule-set/xiaomi.srs) | [Link](/../../raw/rule-set/xiaomi.json)
+- **Dan-ads Rule Set:** [Download](/../../raw/rule-set/dan.srs) | [Link](/../../raw/rule-set/dan.json)
 
 ### Tập luật chặn các loại nội dung cụ thể
 Bộ tập luật này chứa các quy tắc để chặn các loại nội dung cụ thể như mạng đen, trò chơi cá cược và các trang web quảng cáo.
