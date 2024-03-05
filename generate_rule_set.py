@@ -8,6 +8,9 @@ output_dir = "./rule-set"
 def write_json_file(data, filepath):
     with open(filepath, "w") as f:
         json.dump(data, f, indent=4)
+        f.seek(0)  # Di chuyển con trỏ tệp về đầu
+        f.truncate()  # Xóa dữ liệu hiện tại trong tệp
+        f.write(",\n".join(data["rules"][0]["domain"]))
 
 def fetch_and_convert_url(url, convert_function, function_name):
     filename = function_name + ".json"
