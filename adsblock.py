@@ -23,13 +23,12 @@ def write_json_file(data, filepath):
         json.dump(data, f, indent=4)
 
 def main():
+    os.makedirs(output_dir, exist_ok=True)  # Tạo thư mục nếu không tồn tại
+
     # Danh sách các URL chứa các tệp JSON
     urls = [
         "https://raw.githubusercontent.com/Thaomtam/sing-box-rule-set-vn/rule-set/block.json",
-        "https://raw.githubusercontent.com/Thaomtam/sing-box-rule-set-vn/rule-set/adway.json",
-        "https://github.com/Thaomtam/sing-box-rule-set-vn/raw/rule-set/MVPS.json",
-      "https://github.com/Thaomtam/sing-box-rule-set-vn/raw/rule-set/easylist.json"
-       
+        "https://raw.githubusercontent.com/Thaomtam/sing-box-rule-set-vn/rule-set/adway.json"
     ]
 
     # Thu thập tất cả các tên miền duy nhất từ các tệp JSON
@@ -38,7 +37,7 @@ def main():
     # Tạo cấu trúc JSON mới với danh sách tên miền duy nhất
     new_json_data = {"version": 1, "rules": [{"domain": unique_domains}]}
 
-    # Ghi vào tệp JSON mới
+    # Ghi vào tệp JSON mới trong thư mục output_dir
     output_json_filepath = os.path.join(output_dir, "combined_domains.json")
     write_json_file(new_json_data, output_json_filepath)
 
