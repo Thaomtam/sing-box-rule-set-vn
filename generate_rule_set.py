@@ -21,15 +21,15 @@ def fetch_and_convert_url(url, convert_function, function_name):
 
 def convert_block(data):
     domain_list = [line.strip() for line in data.splitlines() if line.strip() and not line.startswith("#")]
-    return {domain_list}
+    return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def convert_spam404(data):
     domain_list = [line.strip() for line in data.splitlines() if line.strip() and not line.startswith("#")]
-    return {domain_list}
+    return {"version": 1, "rules": [{"domain": domain_list}]}
     
 def convert_adway(data):
     domain_list = [line.split()[1].split("#")[0] for line in data.splitlines() if line.strip() and not line.startswith("#") and "localhost" not in line]
-    return {domain_list}
+    return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def convert_MVPS(data):
     domain_list = []
@@ -43,7 +43,7 @@ def convert_MVPS(data):
             parts = line.split()
             if len(parts) >= 2 and parts[0] in ["0.0.0.0", "127.0.0.1", "::1"]:
                 domain_list.append(parts[1].split("#")[0])
-    return {domain_list}
+    return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def convert_easylist(data):
     domain_list = []
@@ -53,42 +53,42 @@ def convert_easylist(data):
             parts = line.split("||")
             if len(parts) >= 2:
                 domain_list.append(parts[1].split("^")[0])
-    return {domain_list}
+    return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def black(data):
     domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
     # Loại bỏ các tên miền không mong muốn
     unwanted_domains = {"localhost", "broadcasthost", "local", "ip6-localhost", "ip6-loopback", "0.0.0.0", "localhost.localdomain", "1", "0", "2", "3"}
     domain_list = [domain for domain in domain_list if domain not in unwanted_domains]
-    return {domain_list}
+    return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def yoyo(data):
     domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
     # Loại bỏ các tên miền không mong muốn
     unwanted_domains = {"localhost", "broadcasthost", "local", "ip6-localhost", "ip6-loopback", "0.0.0.0", "localhost.localdomain", "1", "0", "2", "3"}
     domain_list = [domain for domain in domain_list if domain not in unwanted_domains]
-    return {domain_list}
+    return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def anudeep(data):
     domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
     # Loại bỏ các tên miền không mong muốn
     unwanted_domains = {"localhost", "broadcasthost", "local", "ip6-localhost", "ip6-loopback", "0.0.0.0", "localhost.localdomain", "1", "0", "2", "3"}
     domain_list = [domain for domain in domain_list if domain not in unwanted_domains]
-    return {domain_list}
+    return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def xiaomi(data):
     domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
     # Loại bỏ các tên miền không mong muốn
     unwanted_domains = {"localhost", "broadcasthost", "local", "ip6-localhost", "ip6-loopback", "0.0.0.0", "localhost.localdomain", "1", "0", "2", "3"}
     domain_list = [domain for domain in domain_list if domain not in unwanted_domains]
-    return {domain_list}
+    return {"version": 1, "rules": [{"domain": domain_list}]}
  
 def dan(data):
     domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
     # Loại bỏ các tên miền không mong muốn
     unwanted_domains = {"localhost", "broadcasthost", "local", "ip6-localhost", "ip6-loopback", "0.0.0.0", "localhost.localdomain", "1", "0", "2", "3"}
     domain_list = [domain for domain in domain_list if domain not in unwanted_domains]
-    return {domain_list}
+    return {"version": 1, "rules": [{"domain": domain_list}]}
  
 def Kninja(data):
     domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
@@ -114,7 +114,7 @@ def Kninja(data):
         "3"
     }
     domain_list = [domain for domain in domain_list if domain not in unwanted_domains]
-    return {domain_list}
+    return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def Redirect(data):
     domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
@@ -140,7 +140,7 @@ def Redirect(data):
         "3"
     }
     domain_list = [domain for domain in domain_list if domain not in unwanted_domains]
-    return {domain_list}
+    return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def Facebook(data):
     domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
@@ -166,7 +166,7 @@ def Facebook(data):
         "3"
     }
     domain_list = [domain for domain in domain_list if domain not in unwanted_domains]
-    return {domain_list}
+    return {"version": 1, "rules": [{"domain": domain_list}]}
                                           
 def extract_threat(url):
     response = requests.get(url)
