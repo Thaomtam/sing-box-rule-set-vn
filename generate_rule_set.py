@@ -7,9 +7,7 @@ output_dir = "./rule-set"
 
 def write_json_file(data, filepath):
     with open(filepath, "w") as f:
-        domain_list = data["rules"][0]["domain"]
-        domain_string = ",\n".join(domain_list)
-        f.write(domain_string)
+        json.dump(data, f, indent=4)
 
 def fetch_and_convert_url(url, convert_function, function_name):
     filename = function_name + ".json"
