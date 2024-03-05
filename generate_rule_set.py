@@ -57,10 +57,21 @@ def extract_threat(url):
 def extract_casino(url):
     response = requests.get(url)
     if response.status_code == 200:
-        return extract_domains(response.text)
+        lines = response.text.split('\n')
+        domain_list = []
+        for line in lines:
+            line = line.strip()
+            if line and not line.startswith('#'):
+                matches = re.findall(r"[\w\.-]+", line)
+                if len(matches) >= 2:
+                    domain_list.append(matches[1])
+                else:
+                    print(f"No match found in line: {line}")
+        return domain_list
     else:
         print("Failed to fetch casino file.")
         return []
+
 
 def extract_adservers(url):
     response = requests.get(url)
