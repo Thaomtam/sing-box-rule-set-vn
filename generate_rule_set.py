@@ -25,8 +25,15 @@ def merge_domains(*args):
     return list(merged_domains)
 
 def extract_domains(data):
-    domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
+    domain_list = []
+    for line in data.splitlines():
+        line = line.strip()
+        if line and not line.startswith("#"):
+            matches = re.findall(r"[\w\.-]+", line)
+            if matches:
+                domain_list.append(matches[0])  # Using the first match if available
     return domain_list
+
 
 def extract_sources_and_merge(urls):
     all_domains = []
