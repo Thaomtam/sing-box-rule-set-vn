@@ -33,18 +33,23 @@ def convert_to_json_and_srs(url, convert_function, function_name):
         os.system(f"sing-box rule-set compile --output {srs_output_file} {json_output_file}")
 
 def extract_domains(data):
-    domain_list = []
-    for line in data.splitlines():
-        if line.strip() and not line.startswith("#"):
-            domains = re.findall(r"[\w\.-]+", line)
-            if domains: 
-                domain_list.extend(domains) # Sử dụng extend để thêm nhiều tên miền cùng một lúc
+    domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
     return domain_list
-    
+
 def extract_threat(url):
     response = requests.get(url)
     if response.status_code == 200:
-        return extract_domains(response.text)
+        lines = response.text.split('\n')
+        domain_list = []
+        for line in lines:
+            line = line.strip()
+            if line and not line.startswith('#'):
+                matches = re.findall(r"[\w\.-]+", line)
+                if len(matches) >= 2:
+                    domain_list.append(matches[1])
+                else:
+                    print(f"No match found in line: {line}")
+        return domain_list
     else:
         print("Failed to fetch threat file.")
         return []
