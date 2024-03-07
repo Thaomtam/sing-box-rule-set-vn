@@ -13,6 +13,7 @@ Bộ tập luật này chứa các quy tắc để chặn quảng cáo và các 
 - **MVPS Rule Set:** [Download](/../../raw/rule-set/MVPS.srs) | [Link](/../../raw/rule-set/MVPS.json)
 - **Easylist Rule Set:** [Download](/../../raw/rule-set/easylist.srs) | [Link](/../../raw/rule-set/easylist.json)
 - **Yoyo Rule Set:** [Download](/../../raw/rule-set/yoyo.srs) | [Link](/../../raw/rule-set/yoyo.json)
+- **d3host Rule Set:** [Download](/../../raw/rule-set/d3host.srs) | [Link](/../../raw/rule-set/d3host.json)
 - **Black Rule Set:** [Download](/../../raw/rule-set/black.srs) | [Link](/../../raw/rule-set/black.json)
 - **Anudeep Rule Set:** [Download](/../../raw/rule-set/anudeep.srs) | [Link](/../../raw/rule-set/anudeep.json)
 - **Xiaomi-ads Rule Set:** [Download](/../../raw/rule-set/xiaomi.srs) | [Link](/../../raw/rule-set/xiaomi.json)
