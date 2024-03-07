@@ -69,6 +69,13 @@ def yoyo(data):
     domain_list = [domain for domain in domain_list if domain not in unwanted_domains]
     return {"version": 1, "rules": [{"domain": domain_list}]}
 
+def d3host(data):
+    domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
+    # Loại bỏ các tên miền không mong muốn
+    unwanted_domains = {"localhost", "broadcasthost", "local", "ip6-localhost", "ip6-loopback", "0.0.0.0", "localhost.localdomain", "1", "0", "2", "3"}
+    domain_list = [domain for domain in domain_list if domain not in unwanted_domains]
+    return {"version": 1, "rules": [{"domain": domain_list}]}
+    
 def anudeep(data):
     domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
     # Loại bỏ các tên miền không mong muốn
@@ -238,7 +245,8 @@ def main():
         ("https://www.github.developerdan.com/hosts/lists/ads-and-tracking-extended.txt", dan, "dan"),
         ("https://raw.githubusercontent.com/pantsufan/BlockAds/main/hosts", Kninja, "Kninja"),
         ("https://blocklistproject.github.io/Lists/redirect.txt", Redirect, "Redirect"),
-        ("https://blocklistproject.github.io/Lists/facebook.txt", Facebook, "Facebook")
+        ("https://blocklistproject.github.io/Lists/facebook.txt", Facebook, "Facebook"),
+        ("https://raw.githubusercontent.com/d3ward/toolz/master/src/d3host.txt", d3host, "d3host")
     ]
 
     files = [threat_filepath, casino_filepath, adservers_filepath]  # Đưa danh sách các tệp vào files
