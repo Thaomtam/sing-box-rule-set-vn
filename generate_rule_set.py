@@ -70,7 +70,13 @@ def yoyo(data):
     return {"version": 1, "rules": [{"domain": domain_list}]}
 
 def abpvn(data):
-    domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
+    domain_list = []
+    for line in data.splitlines():
+        line = line.strip()
+        if line and not line.startswith("#"):
+            parts = line.split()
+            if len(parts) >= 2 and parts[0] == "0.0.0.0":
+                domain_list.append(parts[1])
     # Loại bỏ các tên miền không mong muốn
     unwanted_domains = {"localhost", "broadcasthost", "local", "ip6-localhost", "ip6-loopback", "0.0.0.0", "localhost.localdomain", "1", "0", "2", "3"}
     domain_list = [domain for domain in domain_list if domain not in unwanted_domains]
