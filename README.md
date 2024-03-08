@@ -22,6 +22,7 @@ Bộ tập luật này chứa các quy tắc để chặn quảng cáo và các 
 - **Kninja Rule Set:** [Download](/../../raw/rule-set/Kninja.srs) | [Link](/../../raw/rule-set/Kninja.json)
 - **Facebook Rule Set:** [Download](/../../raw/rule-set/Facebook.srs) | [Link](/../../raw/rule-set/Facebook.json)
 - **Redirect Rule Set:** [Download](/../../raw/rule-set/Redirect.srs) | [Link](/../../raw/rule-set/Redirect.json)
+- **Abpvn Rule Set:** [Download](/../../raw/rule-set/abpvn.srs) | [Link](/../../raw/rule-set/abpvn.json)
 
 ### Tập luật chặn các loại nội dung cụ thể
 Bộ tập luật này chứa các quy tắc để chặn các loại nội dung cụ thể như mạng đen, trò chơi cá cược và các trang web quảng cáo.
