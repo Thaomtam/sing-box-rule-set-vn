@@ -69,6 +69,13 @@ def yoyo(data):
     domain_list = [domain for domain in domain_list if domain not in unwanted_domains]
     return {"version": 1, "rules": [{"domain": domain_list}]}
 
+def abpvn(data):
+    domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
+    # Loại bỏ các tên miền không mong muốn
+    unwanted_domains = {"localhost", "broadcasthost", "local", "ip6-localhost", "ip6-loopback", "0.0.0.0", "localhost.localdomain", "1", "0", "2", "3"}
+    domain_list = [domain for domain in domain_list if domain not in unwanted_domains]
+    return {"version": 1, "rules": [{"domain": domain_list}]}
+    
 def d3host(data):
     domain_list = [re.findall(r"[\w\.-]+", line)[1] for line in data.splitlines() if line.strip() and not line.startswith("#")]
     # Loại bỏ các tên miền không mong muốn
@@ -239,6 +246,7 @@ def main():
         ("https://winhelp2002.mvps.org/hosts.txt", convert_MVPS, "MVPS"),
         ("https://raw.githubusercontent.com/easylist/easylist/master/easylist/easylist_adservers.txt", convert_easylist, "easylist"),
         ("https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts", black, "black"),
+        ("https://abpvn.com/android/abpvn.txt", abpvn, "abpvn"),
         ("https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext&useip=0.0.0.0", yoyo, "yoyo"),
         ("https://hosts.anudeep.me/mirror/adservers.txt", anudeep, "anudeep"),
         ("https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Extension/GoodbyeAds-Xiaomi-Extension.txt", xiaomi, "xiaomi"),
